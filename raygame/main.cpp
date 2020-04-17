@@ -15,7 +15,7 @@
 #include "Agent.h"
 #include "Behavior.h"
 #include "SeekBehavior.h"
-
+#include "FleeBehavior.h"
 #include <iostream>
 
 using namespace pathfinding;
