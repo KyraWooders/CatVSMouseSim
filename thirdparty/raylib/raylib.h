@@ -328,11 +328,46 @@
         typedef enum { false, true } bool;
     #endif
 #endif
+#include <cmath>
 
 // Vector2 type
 typedef struct Vector2 {
     float x;
     float y;
+
+	Vector2 operator +(Vector2 rhs)
+	{
+		return Vector2{ x + rhs.x, y + rhs.y };
+	}
+
+	Vector2 operator -(Vector2 rhs)
+	{
+		return Vector2{ x - rhs.x, y - rhs.y };
+	}
+
+	void operator +=(Vector2 rhs)
+	{
+		x += rhs.x;
+		y += rhs.y;
+	}
+
+	Vector2 operator *(float rhs)
+	{
+		return Vector2{ x * rhs, y * rhs };
+	}
+	//Magnitude is vector length
+	float magnitude()
+	{
+		return sqrt((x * x) + (y * y));
+	}
+	//A normalized vector is the vector divided by its magnitude
+	Vector2 normalize()
+	{
+		if (magnitude() != 0) {
+			return Vector2{ x / magnitude(), y / magnitude() };
+		}
+		return Vector2{ x, y };
+	}
 } Vector2;
 
 // Vector3 type

@@ -12,6 +12,10 @@
 #include "raylib.h" 
 #include "AStarPathfinder.h"
 #include "Maze.h"
+#include "Agent.h"
+#include "Behavior.h"
+#include "SeekBehavior.h"
+
 #include <iostream>
 
 using namespace pathfinding;
