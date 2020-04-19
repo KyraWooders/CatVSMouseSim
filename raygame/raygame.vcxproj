@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
-    <ClCompile Include="Behavior.cpp" />
+    <ClCompile Include="ClosedMazeBehavior.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SeekBehavior.cpp" />
@@ -141,6 +141,7 @@
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="ClosedMazeBehavior.h" />
     <ClInclude Include="FleeBehavior.h" />
     <ClInclude Include="Maze.h" />
     <ClInclude Include="SeekBehavior.h" />
