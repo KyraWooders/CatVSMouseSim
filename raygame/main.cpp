@@ -106,7 +106,7 @@ int main()
 	cheese->setSize(Vector2{10,10});
 
 	WithinRangeCondition* canSeeCat = new WithinRangeCondition(cat, 100.0f);
-	WithinRangeCondition* canSeeMouse = new WithinRangeCondition(mouse, 300.0f);
+	WithinRangeCondition* canSeeMouse = new WithinRangeCondition(mouse, 150.0f);
 	BooleanDecision* canSeeDecisionM = new BooleanDecision(fleeDecision, seekCheeseDecision, canSeeCat);
 	BooleanDecision* canSeeDecisionC = new BooleanDecision(seekMouseDecision, wanderDecision, canSeeMouse);
 	DecisionTreeBehavior* mouseDecisionTree = new DecisionTreeBehavior(canSeeDecisionM);
