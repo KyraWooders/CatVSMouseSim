@@ -11,11 +11,12 @@
 
 #include "raylib.h" 
 #include "AStarPathfinder.h"
-#include "Maze.h"
 #include "Agent.h"
 #include "Behavior.h"
 #include "SeekBehavior.h"
 #include "FleeBehavior.h"
+#include "BooleanDecision.h"
+#include "WanderBehavior.h"
 #include <iostream>
 
 using namespace pathfinding;
@@ -37,45 +38,6 @@ int main()
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
-
-	Maze<tileType> maze({ 8, 6 }, { 130, 130 }, closed, MAROON);
-
-	//Walls
-	maze.createTile({ 2, 1 }, open, SKYBLUE);
-	maze.createTile({ 2, 2 }, open, SKYBLUE);
-	maze.createTile({ 2, 3 }, open, SKYBLUE);
-	maze.createTile({ 2, 4 }, open, SKYBLUE);
-
-	maze.createTile({ 1, 1 }, open, SKYBLUE);
-	maze.createTile({ 1, 2 }, open, SKYBLUE);
-	maze.createTile({ 1, 3 }, open, SKYBLUE);
-	maze.createTile({ 1, 4 }, open, SKYBLUE);
-
-	maze.createTile({ 3, 1 }, open, SKYBLUE);
-	maze.createTile({ 3, 2 }, open, SKYBLUE);
-	maze.createTile({ 3, 3 }, open, SKYBLUE);
-	maze.createTile({ 3, 4 }, open, SKYBLUE);
-
-	maze.createTile({ 4, 1 }, open, SKYBLUE);
-	maze.createTile({ 4, 2 }, open, SKYBLUE);
-	maze.createTile({ 4, 3 }, open, SKYBLUE);
-	maze.createTile({ 4, 4 }, open, SKYBLUE);
-
-	maze.createTile({ 5, 1 }, open, SKYBLUE);
-	maze.createTile({ 5, 2 }, open, SKYBLUE);
-	maze.createTile({ 5, 3 }, open, SKYBLUE);
-	maze.createTile({ 5, 4 }, open, SKYBLUE);
-
-	maze.createTile({ 6, 1 }, open, SKYBLUE);
-	maze.createTile({ 6, 2 }, open, SKYBLUE);
-	maze.createTile({ 6, 3 }, open, SKYBLUE);
-	maze.createTile({ 6, 4 }, open, SKYBLUE);
-
-	Tile<tileType> tile1 = maze.checkTile({ 100, 100 });
-	Tile<tileType> tile2 = maze.getTile({ 1, 3 });
-
-	std::cout << tile1.data << ", ";
-	std::cout << tile2.data << std::endl;
 
 	//Nodes
 	Node* a = new Node();
@@ -116,10 +78,33 @@ int main()
 		std::cout << node->gScore << std::endl;
 	}
 
+	FleeBehavior* flee = new FleeBehavior();
+	SeekBehavior* seek = new SeekBehavior();
+	WanderBehavior* wander = new WanderBehavior();
+
+	Agent* mouse = new Agent();
+	mouse->setPosition(Vector2{400.0f,400.0f});
+	mouse->setColor(BLACK);
+	mouse->setSize(Vector2{50,50});
+	mouse->setSpeed(250.0f);
+	mouse->addBehavior(wander);
+
+	Agent* cat = new Agent();
+	cat->setPosition(Vector2{300.0f,300.0f});
+	cat->setColor(DARKGRAY);
+	cat->setSize(Vector2{ 80,80 });
+	cat->setSpeed(250.0f);
+	cat->addBehavior(seek);
+
+	flee->setTarget(cat);
+	seek->setTarget(mouse);
+
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key
 	{
 		// Update
+		mouse->update(GetFrameTime());
+		cat->update(GetFrameTime());
 		//----------------------------------------------------------------------------------
 		// TODO: Update your variables here
 		//----------------------------------------------------------------------------------
@@ -131,7 +116,9 @@ int main()
 		ClearBackground(BLACK);
 
 		//Draw the tile map
-		maze.draw();
+		
+		mouse->draw();
+		cat->draw();
 
 		////Draw the graph
 		//drawGraph(a, { 200, 200 });

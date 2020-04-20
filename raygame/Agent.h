@@ -52,7 +52,7 @@ protected:
 
 	Vector2 m_position = { 0.0f, 0.0f };
 	Vector2 m_velocity = { 0.0f, 0.0f };
-	Vector2 m_size = { 0.0f, 0.0f };
+	Vector2 m_size = { (int)0, (int)0 };
 
 	float m_speed = 500.0f;
 	Color m_color = MAROON;
