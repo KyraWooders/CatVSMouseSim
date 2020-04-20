@@ -132,22 +132,32 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Agent.cpp" />
+    <ClCompile Include="BehaviorDecision.cpp" />
     <ClCompile Include="BooleanDecision.cpp" />
+    <ClCompile Include="DecisionTreeBehavior.cpp" />
+    <ClCompile Include="EdgeBehavior.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PursuitBehavior.cpp" />
     <ClCompile Include="SeekBehavior.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
+    <ClCompile Include="WithinRangeCondition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="AStarPathfinder.h" />
     <ClInclude Include="Behavior.h" />
+    <ClInclude Include="BehaviorDecision.h" />
     <ClInclude Include="BooleanDecision.h" />
     <ClInclude Include="Condition.h" />
     <ClInclude Include="Decision.h" />
+    <ClInclude Include="DecisionTreeBehavior.h" />
+    <ClInclude Include="EdgeBehavior.h" />
     <ClInclude Include="FleeBehavior.h" />
+    <ClInclude Include="PursuitBehavior.h" />
     <ClInclude Include="SeekBehavior.h" />
     <ClInclude Include="WanderBehavior.h" />
+    <ClInclude Include="WithinRangeCondition.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

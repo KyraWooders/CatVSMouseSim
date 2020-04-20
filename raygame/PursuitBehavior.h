@@ -1,15 +1,13 @@
 #pragma once
 #include "Behavior.h"
 
-class SeekBehavior : public Behavior
+class PursuitBehavior : public Behavior
 {
 public:
-	SeekBehavior() {}
-	virtual ~SeekBehavior() {}
+	PursuitBehavior() {}
+	virtual ~PursuitBehavior() {}
 
-	//updates with the agent
 	virtual void update(Agent* agent, float deltaTime);
-	//the target to seek to
 	void setTarget(Agent* agent) { m_target = agent; }
 
 private:

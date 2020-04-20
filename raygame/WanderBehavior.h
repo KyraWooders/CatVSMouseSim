@@ -7,6 +7,7 @@ public:
 	WanderBehavior() {}
 	virtual ~WanderBehavior() {}
 
+	//updates with the agent
 	virtual void update(Agent* agent, float deltaTime);
 
 private:

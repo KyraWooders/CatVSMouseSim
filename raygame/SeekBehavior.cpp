@@ -25,5 +25,5 @@ void SeekBehavior::update(Agent* agent, float deltaTime)
 	agent->addForce(force * deltaTime);
 
 	//Change color
-	agent->setColor(YELLOW);
+	agent->setColor(BROWN);
 }
