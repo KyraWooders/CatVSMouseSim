@@ -138,7 +138,6 @@
     <ClCompile Include="EdgeBehavior.cpp" />
     <ClCompile Include="FleeBehavior.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PursuitBehavior.cpp" />
     <ClCompile Include="SeekBehavior.cpp" />
     <ClCompile Include="WanderBehavior.cpp" />
     <ClCompile Include="WithinRangeCondition.cpp" />
@@ -154,7 +153,6 @@
     <ClInclude Include="DecisionTreeBehavior.h" />
     <ClInclude Include="EdgeBehavior.h" />
     <ClInclude Include="FleeBehavior.h" />
-    <ClInclude Include="PursuitBehavior.h" />
     <ClInclude Include="SeekBehavior.h" />
     <ClInclude Include="WanderBehavior.h" />
     <ClInclude Include="WithinRangeCondition.h" />

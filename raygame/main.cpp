@@ -16,7 +16,6 @@
 #include "FleeBehavior.h"
 #include "BooleanDecision.h"
 #include "WanderBehavior.h"
-#include "PursuitBehavior.h"
 #include "EdgeBehavior.h"
 #include "DecisionTreeBehavior.h"
 #include "WithinRangeCondition.h"
@@ -77,28 +76,28 @@ int main()
 	}
 
 	FleeBehavior* flee = new FleeBehavior();
-	SeekBehavior* seek = new SeekBehavior();
+	SeekBehavior* seekMouse = new SeekBehavior();
+	SeekBehavior* seekCheese = new SeekBehavior();
 	WanderBehavior* wander = new WanderBehavior();
-	PursuitBehavior* pursuit = new PursuitBehavior();
 	EdgeBehavior* border = new EdgeBehavior();
 
 	Agent* mouse = new Agent();
 	mouse->setPosition(Vector2{400.0f,400.0f});
-	mouse->setColor(BLACK);
+	mouse->setColor(BROWN);
 	mouse->setSize(Vector2{30,30});
 	mouse->setSpeed(50.0f);
 	mouse->addBehavior(border);
 	BehaviorDecision* fleeDecision = new BehaviorDecision(flee);
-	BehaviorDecision* seekDecision = new BehaviorDecision(seek);
+	BehaviorDecision* seekCheeseDecision = new BehaviorDecision(seekCheese);
 	
 
 	Agent* cat = new Agent();
 	cat->setPosition(Vector2{300.0f,300.0f});
-	cat->setColor(DARKGRAY);
+	cat->setColor(GRAY);
 	cat->setSize(Vector2{ 50,50 });
 	cat->setSpeed(50.0f);
 	cat->addBehavior(border);
-	BehaviorDecision* pursuitDecision = new BehaviorDecision(pursuit);
+	BehaviorDecision* seekMouseDecision = new BehaviorDecision(seekMouse);
 	BehaviorDecision* wanderDecision = new BehaviorDecision(wander);
 
 	Agent* cheese = new Agent();
@@ -107,16 +106,17 @@ int main()
 	cheese->setSize(Vector2{10,10});
 
 	WithinRangeCondition* canSeeCat = new WithinRangeCondition(cat, 100.0f);
-	WithinRangeCondition* canSeeMouse = new WithinRangeCondition(mouse, 100.0f);
-	BooleanDecision* canSeeDecisionM = new BooleanDecision(seekDecision, fleeDecision, canSeeCat);
-	BooleanDecision* canSeeDecisionC = new BooleanDecision(wanderDecision, pursuitDecision, canSeeMouse);
+	WithinRangeCondition* canSeeMouse = new WithinRangeCondition(mouse, 300.0f);
+	BooleanDecision* canSeeDecisionM = new BooleanDecision(fleeDecision, seekCheeseDecision, canSeeCat);
+	BooleanDecision* canSeeDecisionC = new BooleanDecision(seekMouseDecision, wanderDecision, canSeeMouse);
 	DecisionTreeBehavior* mouseDecisionTree = new DecisionTreeBehavior(canSeeDecisionM);
 	DecisionTreeBehavior* catDecisionTree = new DecisionTreeBehavior(canSeeDecisionC);
 	mouse->addBehavior(mouseDecisionTree);
 	cat->addBehavior(catDecisionTree);
 
 	flee->setTarget(cat);
-	seek->setTarget(cheese);
+	seekCheese->setTarget(cheese);
+	seekMouse->setTarget(mouse);
 
 	// Main game loop
 	while (!WindowShouldClose())    // Detect window close button or ESC key

@@ -45,9 +45,6 @@
     <ClCompile Include="BehaviorDecision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PursuitBehavior.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AStarPathfinder.h">
@@ -87,9 +84,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BehaviorDecision.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PursuitBehavior.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
